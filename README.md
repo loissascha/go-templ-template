@@ -14,7 +14,7 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
 ## Prerequisites
 
 - Go 1.25.3 or later
-- Node.js and npm (for Tailwind CSS)
+- Node.js and bun (for Tailwind CSS)
 
 ## Installation
 
@@ -27,12 +27,17 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
 2. Install dependencies:
    ```bash
    go mod download
-   npm install
+   bun install
    ```
 
 3. Install Air globally:
    ```bash
    go install github.com/cosmtrek/air@latest
+   ```
+
+4. Install Templ globally:
+   ```bash
+   go install github.com/a-h/templ/cmd/templ@latest
    ```
 
 ## Usage
@@ -46,8 +51,9 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
 
 3. Build for production:
    ```bash
-   templ generate
-   go build -o ./bin/main ./cmd/api
+    templ generate
+    bunx @tailwindcss/cli -i ./src/input.css -o ./static/output.css
+    go build -o ./bin/main ./cmd/api
    ```
 
 ## Project Structure
