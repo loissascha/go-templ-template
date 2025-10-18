@@ -6,9 +6,12 @@ templ Layout(content templ.Component) {
 		<head>
 			<title>Go + Templ + Air</title>
 			<link href="/static/output.css" rel="stylesheet"/>
+			<script src="/static/htmx.min.js"></script>
 		</head>
 		<body class="bg-black text-white">
+		<div class="container mx-auto">
 			@content
+			</div>
 		</body>
 	</html>
 }
