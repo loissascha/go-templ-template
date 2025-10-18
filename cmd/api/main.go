@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/loissascha/go-http-server/server"
 	"github.com/loissascha/go-logger/logger"
@@ -17,6 +18,9 @@ func main() {
 
 	// register routes
 	homeH.RegisterHandlers(s)
+
+	fs := http.FileServer(http.Dir("./static"))
+	s.GetMux().Handle("/static/", http.StripPrefix("/static/", fs))
 
 	logger.Info(nil, "Server starting at port: {port}", port)
 	err := s.Serve(fmt.Sprintf(":%v", port))
