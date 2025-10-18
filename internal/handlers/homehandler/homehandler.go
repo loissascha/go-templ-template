@@ -28,5 +28,5 @@ func (h *HomeHandler) homeRoute(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *HomeHandler) loremIpsumRoute(w http.ResponseWriter, r *http.Request) {
-	components.Lorem().Render(r.Context(), w)
+	components.TestInfo().Render(r.Context(), w)
 }
