@@ -26,18 +26,23 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
    cd go-templ-template
    ```
 
-2. Install dependencies:
+2. Remove git folder from cloned repository:
+```bash
+rm -rf .git
+```
+
+3. Install dependencies:
    ```bash
    go mod download
    bun install
    ```
 
-3. Install Air globally:
+4. Install Air globally:
    ```bash
    go install github.com/cosmtrek/air@latest
    ```
 
-4. Install Templ globally:
+5. Install Templ globally:
    ```bash
    go install github.com/a-h/templ/cmd/templ@latest
    ```
