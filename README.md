@@ -8,8 +8,10 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
 - **Templ**: Type-safe HTML templating for Go
 - **Air**: Live reload for Go applications
 - **Tailwind CSS**: Utility-first CSS framework
+- **HTMX**: For dynamic interactions without JavaScript
 - **Modular Structure**: Clean architecture with handlers and internal packages
-- **Custom HTTP Server**: Lightweight server implementation
+- **Custom HTTP Server**: Lightweight server implementation using go-http-server
+- **Custom Logger**: Structured logging with go-logger
 
 ## Prerequisites
 
@@ -53,27 +55,54 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
    ```bash
     templ generate
     bunx @tailwindcss/cli -i ./src/input.css -o ./static/output.css
-    go build -o ./bin/main ./cmd/api
+    go build -o ./bin/main ./cmd/server
    ```
 
 ## Project Structure
 
 ```
 .
-├── cmd/api/              # Application entry point
-├── internal/handlers/    # HTTP handlers
-│   └── homehandler/      # Home page handler
-├── .air.toml             # Air configuration
-├── go.mod                # Go module file
-└── README.md             # This file
+├── cmd/server/                    # Application entry point
+├── internal/
+│   ├── handlers/
+│   │   └── homehandler/        # HTTP handlers
+│   └── ui/
+│       ├── components/         # Reusable UI components (.templ files)
+│       ├── layouts/            # Page layouts (.templ files)
+│       └── pages/              # Page templates (.templ files)
+├── src/input.css               # Tailwind CSS input
+├── static/                     # Static assets (CSS, JS)
+│   ├── htmx.min.js
+│   └── output.css
+├── .air.toml                   # Air live reload configuration
+├── go.mod                      # Go module file
+├── package.json                # Node.js dependencies
+└── README.md                   # This file
 ```
 
 ## Customization
 
-- Add new handlers in `internal/handlers/`
-- Create templates with `.templ` files
-- Configure Tailwind in your templates
-- Modify Air settings in `.air.toml`
+### Adding New Pages
+- Create new page templates in `internal/ui/pages/`
+- Add corresponding handlers in `internal/handlers/`
+- Register routes in the handler's `RegisterHandlers` method
+
+### Creating Components
+- Add reusable components in `internal/ui/components/`
+- Use HTMX attributes for dynamic loading (e.g., `hx-get`, `hx-swap`)
+
+### Styling
+- Edit `src/input.css` for custom Tailwind configurations
+- Use Tailwind classes in your `.templ` files
+- The build process compiles CSS to `static/output.css`
+
+### Static Assets
+- Place static files (images, fonts, etc.) in `static/`
+- Access them via `/static/` URL path
+
+### Configuration
+- Modify Air settings in `.air.toml` for development
+- Update server configuration in `cmd/server/main.go`
 
 ## Contributing
 
