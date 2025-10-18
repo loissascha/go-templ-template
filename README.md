@@ -27,9 +27,9 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
    ```
 
 2. Remove git folder from cloned repository:
-```bash
-rm -rf .git
-```
+    ```bash
+    rm -rf .git
+    ```
 
 3. Install dependencies:
    ```bash
