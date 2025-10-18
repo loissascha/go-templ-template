@@ -29,7 +29,7 @@ func Lorem() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<span>Lorem ipsum dolor sit amet feugiat erat no ea ad kasd sit. Justo accusam ea amet. Magna esse justo nibh nonumy feugiat commodo lobortis vulputate zzril dolore dolore. Dolor et vero rebum tempor magna euismod. Sit est commodo. Kasd erat wisi elitr takimata dolor clita eirmod sanctus kasd et et takimata assum. Blandit veniam ex duo labore dolore elitr facer. No invidunt velit erat amet sea. Veniam duo dolore facilisis justo minim est consectetuer dolor nibh eos kasd sea molestie qui eirmod vero congue. Sed ipsum facilisis dolore eos sed dolore adipiscing ea eirmod sed gubergren lorem tempor illum. Dolores vel assum lorem in in vel sea nihil justo eirmod tempor sit diam dolor. Takimata diam erat est tempor voluptua. Dolores duis quis. Vel dolor clita feugait facilisis amet vel no magna sit sed dolore ipsum at duo. Eirmod exerci ipsum sanctus et sea accusam autem et sed dolores euismod ut lorem. Takimata nonumy et ipsum takimata accusam eos et vero voluptua aliquyam feugiat. Vel nonummy autem ipsum consetetur consequat et feugiat esse erat justo vulputate takimata sit luptatum consetetur vero. Et dolores amet eirmod dolore clita luptatum. Wisi labore aliquam feugait.</span>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<span class=\"text-gray-300\">Lorem ipsum dolor sit amet feugiat erat no ea ad kasd sit. Justo accusam ea amet. Magna esse justo nibh nonumy feugiat commodo lobortis vulputate zzril dolore dolore. Dolor et vero rebum tempor magna euismod. </span>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

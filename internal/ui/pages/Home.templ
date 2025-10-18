@@ -1,6 +1,10 @@
 package pages
 
 templ Home() {
-	<h1 class="text-2xl font-bold">Welcome Templ Template</h1>
-	<div hx-get="/lorem" hx-swap="outerHTML" hx-trigger="load"></div>
+	<div class="container mx-auto p-5">
+		<div class="text-center">
+			<h1 class="text-4xl mb-4 font-bold">Welcome to your new templ Website</h1>
+		</div>
+		<div hx-get="/lorem" hx-swap="outerHTML" hx-trigger="load delay:100ms"></div>
+	</div>
 }

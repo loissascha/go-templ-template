@@ -8,9 +8,12 @@ templ Layout(content templ.Component) {
 			<link href="/static/output.css" rel="stylesheet"/>
 			<script src="/static/htmx.min.js"></script>
 		</head>
-		<body class="bg-black text-white">
-			<div class="container mx-auto">
-				@content
+		<body class="bg-neutral-900 text-neutral-200">
+			<div class="flex flex-col min-w-dvw min-h-dvh">
+				<div class="grow">
+					@content
+				</div>
+				<div class="p-4 text-center text-neutral-500">Footer</div>
 			</div>
 		</body>
 	</html>
