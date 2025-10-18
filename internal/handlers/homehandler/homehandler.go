@@ -4,6 +4,8 @@ import (
 	"net/http"
 
 	"github.com/loissascha/go-http-server/server"
+	"github.com/loissascha/go-templ-template/internal/ui/layouts"
+	"github.com/loissascha/go-templ-template/internal/ui/pages"
 )
 
 type HomeHandler struct {
@@ -18,5 +20,7 @@ func (h *HomeHandler) RegisterHandlers(s *server.Server) {
 }
 
 func (h *HomeHandler) homeRoute(w http.ResponseWriter, r *http.Request) {
-	http.Error(w, "Not found", http.StatusNotFound)
+	homeComponent := pages.Home()
+	layoutComponent := layouts.Layout(homeComponent)
+	layoutComponent.Render(r.Context(), w)
 }
