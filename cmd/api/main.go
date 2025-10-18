@@ -9,8 +9,6 @@ import (
 )
 
 func main() {
-	fmt.Println("started")
-
 	port := "42069"
 	s := server.NewServer()
 
