@@ -1,7 +1,7 @@
 package components
 
-templ TestInfo() {
+templ TestInfo(t map[string]string) {
 	<span class="text-gray-300">
-		This component has been loaded by HTMX.
+		{ t["content"] }
 	</span>
 }

@@ -10,10 +10,13 @@ import (
 )
 
 type HomeHandler struct {
+	s *server.Server
 }
 
-func New() *HomeHandler {
-	return &HomeHandler{}
+func New(s *server.Server) *HomeHandler {
+	return &HomeHandler{
+		s: s,
+	}
 }
 
 func (h *HomeHandler) RegisterHandlers(s *server.Server) {
@@ -22,11 +25,14 @@ func (h *HomeHandler) RegisterHandlers(s *server.Server) {
 }
 
 func (h *HomeHandler) homeRoute(w http.ResponseWriter, r *http.Request) {
-	homeComponent := pages.Home()
+	lang := h.s.GetActiveLanguage(r)
+	t := h.s.GetLanguageStringMap(r)
+	homeComponent := pages.Home(t, lang)
 	layoutComponent := layouts.Layout(homeComponent)
 	layoutComponent.Render(r.Context(), w)
 }
 
 func (h *HomeHandler) loremIpsumRoute(w http.ResponseWriter, r *http.Request) {
-	components.TestInfo().Render(r.Context(), w)
+	t := h.s.GetLanguageStringMap(r)
+	components.TestInfo(t).Render(r.Context(), w)
 }

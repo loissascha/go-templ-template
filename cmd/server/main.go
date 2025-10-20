@@ -19,13 +19,19 @@ func main() {
 		panic("PORT not defined. Make sure there is a .env file or a environment variable set!")
 	}
 
-	s, err := server.NewServer()
+	s, err := server.NewServer(
+		server.EnableTranslations(),
+		server.EnableAutoDetectLanguage(),
+		server.SetDefaultLanguage("en"),
+		server.AddTranslationFile("en", "src/en.json"),
+		server.AddTranslationFile("de", "src/de.json"),
+	)
 	if err != nil {
 		panic(err)
 	}
 
 	// handler
-	homeH := homehandler.New()
+	homeH := homehandler.New(s)
 
 	// register routes
 	homeH.RegisterHandlers(s)

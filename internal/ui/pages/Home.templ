@@ -1,12 +1,12 @@
 package pages
 
-templ Home() {
+templ Home(t map[string]string, lang string) {
 	<div class="container mx-auto p-5">
 		<div class="text-center">
-			<h1 class="text-4xl mb-4 font-bold">Welcome to your new templ Website</h1>
+			<h1 class="text-4xl mb-4 font-bold">{ t["heading"] }</h1>
 		</div>
 		<div class="text-center">
-			<div hx-get="/lorem" hx-swap="outerHTML" hx-trigger="load delay:100ms"></div>
+			<div hx-get={ "/" + lang + "/lorem" } hx-swap="outerHTML" hx-trigger="load delay:100ms"></div>
 		</div>
 	</div>
 }
