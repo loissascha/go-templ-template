@@ -10,6 +10,7 @@
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-neutral-200: oklch(92.2% 0 0);
     --color-neutral-500: oklch(55.6% 0 0);
+    --color-neutral-800: oklch(26.9% 0 0);
     --color-neutral-900: oklch(20.5% 0 0);
     --spacing: 0.25rem;
     --text-4xl: 2.25rem;
@@ -220,6 +221,15 @@
   .flex-col {
     flex-direction: column;
   }
+  .justify-center {
+    justify-content: center;
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .bg-neutral-800 {
+    background-color: var(--color-neutral-800);
+  }
   .bg-neutral-900 {
     background-color: var(--color-neutral-900);
   }
@@ -245,9 +255,6 @@
   }
   .text-neutral-200 {
     color: var(--color-neutral-200);
-  }
-  .text-neutral-500 {
-    color: var(--color-neutral-500);
   }
   .underline {
     text-decoration-line: underline;
