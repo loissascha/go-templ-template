@@ -3,14 +3,22 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/loissascha/go-http-server/server"
 	"github.com/loissascha/go-logger/logger"
 	"github.com/loissascha/go-templ-template/internal/handlers/homehandler"
 )
 
 func main() {
-	port := "42069"
+	godotenv.Load()
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		panic("PORT not defined. Make sure there is a .env file or a environment variable set!")
+	}
+
 	s := server.NewServer()
 
 	// handler
