@@ -26,13 +26,14 @@ func (h *HomeHandler) RegisterHandlers(s *server.Server) {
 
 func (h *HomeHandler) homeRoute(w http.ResponseWriter, r *http.Request) {
 	lang := h.s.GetActiveLanguage(r)
-	t := h.s.GetLanguageStringMap(r)
+	t := h.s.GetTMap(r)
+	langs := h.s.GetLanguages()
 	homeComponent := pages.Home(t, lang)
-	layoutComponent := layouts.Layout(t, lang, homeComponent)
+	layoutComponent := layouts.Layout(t, lang, langs, homeComponent)
 	layoutComponent.Render(r.Context(), w)
 }
 
 func (h *HomeHandler) loremIpsumRoute(w http.ResponseWriter, r *http.Request) {
-	t := h.s.GetLanguageStringMap(r)
+	t := h.s.GetTMap(r)
 	components.TestInfo(t).Render(r.Context(), w)
 }
