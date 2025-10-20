@@ -25,6 +25,8 @@ func main() {
 		server.SetDefaultLanguage("en"),
 		server.AddTranslationFile("en", "src/en.json"),
 		server.AddTranslationFile("de", "src/de.json"),
+		server.AddTranslationFile("es", "src/es.json"),
+		server.AddTranslationFile("fr", "src/fr.json"),
 	)
 	if err != nil {
 		panic(err)
