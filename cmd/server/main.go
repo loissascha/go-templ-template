@@ -19,7 +19,10 @@ func main() {
 		panic("PORT not defined. Make sure there is a .env file or a environment variable set!")
 	}
 
-	s := server.NewServer()
+	s, err := server.NewServer()
+	if err != nil {
+		panic(err)
+	}
 
 	// handler
 	homeH := homehandler.New()
@@ -31,7 +34,7 @@ func main() {
 	s.GetMux().Handle("/static/", http.StripPrefix("/static/", fs))
 
 	logger.Info(nil, "Server starting at port: {port}", port)
-	err := s.Serve(fmt.Sprintf(":%v", port))
+	err = s.Serve(fmt.Sprintf(":%v", port))
 	if err != nil {
 		logger.Error(err, "Server failed to start...")
 	}
