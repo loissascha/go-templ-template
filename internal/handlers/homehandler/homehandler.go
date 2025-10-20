@@ -28,7 +28,7 @@ func (h *HomeHandler) homeRoute(w http.ResponseWriter, r *http.Request) {
 	lang := h.s.GetActiveLanguage(r)
 	t := h.s.GetLanguageStringMap(r)
 	homeComponent := pages.Home(t, lang)
-	layoutComponent := layouts.Layout(homeComponent)
+	layoutComponent := layouts.Layout(t, lang, homeComponent)
 	layoutComponent.Render(r.Context(), w)
 }
 

@@ -1,8 +1,16 @@
 package layouts
 
-templ Layout(content templ.Component) {
+templ Layout(t map[string]string, lang string, content templ.Component) {
+	{{ enClass := "" }}
+	{{ deClass := "" }}
+	if lang == "en" {
+		{{ enClass = "underline" }}
+	}
+	if lang == "de" {
+		{{ deClass = "underline" }}
+	}
 	<!DOCTYPE html>
-	<html lang="en">
+	<html lang={ lang }>
 		<head>
 			<title>Go + Templ + Air</title>
 			<link href="/static/output.css" rel="stylesheet"/>
@@ -13,7 +21,10 @@ templ Layout(content templ.Component) {
 				<div class="grow">
 					@content
 				</div>
-				<div class="p-4 text-center text-neutral-500">Footer</div>
+				<div class="p-4 text-center text-neutral-500">
+					<a href="/en" class={ "cursor-pointer " + enClass }>English</a>
+					<a href="/de" class={ "cursor-pointer " + deClass }>Deutsch</a>
+				</div>
 			</div>
 		</body>
 	</html>
