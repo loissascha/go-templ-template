@@ -16,7 +16,7 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
 ## Prerequisites
 
 - Go 1.25.3 or later
-- Node.js and bun (for Tailwind CSS)
+- Bun (for Tailwind CSS)
 
 ## Installation
 
