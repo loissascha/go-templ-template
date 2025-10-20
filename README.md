@@ -1,6 +1,6 @@
 # Go Templ Template
 
-A modern Go web application template combining Go, Templ, Air (live reload), and Tailwind CSS for rapid development.
+A modern Go web application template combining Go, Templ, Air (live reload), and Tailwind CSS for rapid development. This template also includes internationalization (i18n) support.
 
 ## Features
 
@@ -9,6 +9,8 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
 - **Air**: Live reload for Go applications
 - **Tailwind CSS**: Utility-first CSS framework
 - **HTMX**: For dynamic interactions without JavaScript
+- **Bun**: Fast JavaScript toolkit for package management
+- **Internationalization (i18n)**: Support for multiple languages using JSON files.
 - **Modular Structure**: Clean architecture with handlers and internal packages
 - **Custom HTTP Server**: Lightweight server implementation using go-http-server
 - **Custom Logger**: Structured logging with go-logger
@@ -16,7 +18,7 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
 ## Prerequisites
 
 - Go 1.25.3 or later
-- Bun (for Tailwind CSS)
+- Bun
 
 ## Installation
 
@@ -59,13 +61,11 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
    air
    ```
 
-2. The server will start on `http://localhost:42069`
+2. The server will start on the port configured in the .env file
 
 3. Build for production:
    ```bash
-    templ generate
-    bunx @tailwindcss/cli -i ./src/input.css -o ./static/output.css
-    go build -o ./bin/main ./cmd/server
+   ./build.sh
    ```
 
 ## Project Structure
@@ -80,15 +80,34 @@ A modern Go web application template combining Go, Templ, Air (live reload), and
 │       ├── components/         # Reusable UI components (.templ files)
 │       ├── layouts/            # Page layouts (.templ files)
 │       └── pages/              # Page templates (.templ files)
-├── src/input.css               # Tailwind CSS input
+├── src/                        # Language files for i18n and css input file for tailwind
+│   ├── en.json
+│   ├── de.json
+│   ├── es.json
+│   └── fr.json
 ├── static/                     # Static assets (CSS, JS)
 │   ├── htmx.min.js
 │   └── output.css
 ├── .air.toml                   # Air live reload configuration
+├── build.sh                    # Build script
 ├── go.mod                      # Go module file
 ├── package.json                # Node.js dependencies
 └── README.md                   # This file
 ```
+
+## Internationalization (i18n)
+
+This template supports internationalization using JSON files located in the `src` directory.
+
+### Adding a New Language
+
+1. Create a new JSON file in the `src` directory (e.g., `it.json`).
+2. Copy the contents of an existing language file (e.g., `en.json`) and translate the values.
+3. Add the language in the /cmd/server/main.go file in the server config.
+
+### Using Translations
+
+Translations can be accessed in your Go code. The default language is determined by the `Accept-Language` header of the incoming request.
 
 ## Customization
 
